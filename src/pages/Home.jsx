@@ -6,6 +6,14 @@ import { db } from '../utils/db';
 export default function Home() {
   const publicProfiles = db.getPublicProfiles();
 
+  const scrollToDemo = (e) => {
+    e.preventDefault();
+    const element = document.getElementById('demo-profiles');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="home-container animate-fade-in">
       {/* Hero Section */}
@@ -28,9 +36,9 @@ export default function Home() {
             <span>Hozir Boshlash</span>
             <ArrowRight size={18} />
           </Link>
-          <a href="#demo-profiles" className="btn btn-secondary btn-lg">
+          <button onClick={scrollToDemo} className="btn btn-secondary btn-lg" style={{ cursor: 'pointer' }}>
             Demolarni ko'rish
-          </a>
+          </button>
         </div>
       </section>
 
